@@ -4,9 +4,9 @@ Automatically build and publish compiled IANA time zone data files in TZif (`zon
 
 This repository provides static URLs for downloading individual compiled time zone files, for example:
 
-- `https://nicolasbon.net/tzif-data/zoneinfo/Europe/Amsterdam`
-- `https://nicolasbon.net/tzif-data/zoneinfo/America/New_York`
-- `https://nicolasbon.net/tzif-data/zoneinfo/Etc/UTC`
+- https://nicolasbon.net/tzif-data/zoneinfo/Europe/Amsterdam
+- https://nicolasbon.net/tzif-data/zoneinfo/America/New_York
+- https://nicolasbon.net/tzif-data/zoneinfo/Etc/UTC
 
 ## What this repository does
 
