@@ -46,8 +46,10 @@ jobs:
         run: |
           cp -a zoneinfo/. public/zoneinfo/
 
-          # Optional: add a simple index page
-          cat > public/index.html <<'EOF'
+          refreshed_at_iso="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+          refreshed_at_display="$(date -u +"%Y-%m-%d %H:%M:%S UTC")"
+
+          cat > public/index.html <<EOF
           <!doctype html>
           <html>
           <head>
@@ -56,6 +58,7 @@ jobs:
           </head>
           <body>
             <h1>TZif files</h1>
+            <p>Last refreshed: <time datetime="$refreshed_at_iso">$refreshed_at_display</time></p>
             <p>Example: <a href="./zoneinfo/Europe/Amsterdam">Europe/Amsterdam</a></p>
           </body>
           </html>
