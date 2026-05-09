@@ -1,0 +1,37 @@
+name: Build TZif data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * 0"
+
+jobs:
+  build-tzif:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download IANA tzdata
+        run: |
+          mkdir -p tzsrc zoneinfo
+          curl -L -o tzdata-latest.tar.gz \
+            "https://www.iana.org/time-zones/repository/tzdata-latest.tar.gz"
+          tar -xzf tzdata-latest.tar.gz -C tzsrc
+
+      - name: Compile all TZif files
+        run: |
+          zic -d zoneinfo \
+            tzsrc/africa \
+            tzsrc/antarctica \
+            tzsrc/asia \
+            tzsrc/australasia \
+            tzsrc/europe \
+            tzsrc/northamerica \
+            tzsrc/southamerica \
+            tzsrc/etcetera \
+            tzsrc/backward
+
+      - name: Upload all TZif files
+        uses: actions/upload-artifact@v4
+        with:
+          name: zoneinfo
+          path: zoneinfo/
