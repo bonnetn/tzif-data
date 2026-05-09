@@ -3,8 +3,8 @@ name: Build and publish TZif files
 on:
   workflow_dispatch:
   schedule:
-    # Weekly, Sunday 03:00 UTC
-    - cron: "0 3 * * 0"
+    # Daily, 03:00 UTC
+    - cron: "0 3 * * *"
 
 permissions:
   contents: read
